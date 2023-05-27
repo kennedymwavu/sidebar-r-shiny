@@ -2,6 +2,7 @@ ui <- bslib::page(
   title = "Sidebar",
   theme = bslib::bs_theme(version = 5),
   lang = "en",
+  shinyjs::useShinyjs(),
   tags$head(
     tags$meta(charset = "utf-8"),
     tags$meta(
@@ -62,25 +63,21 @@ ui <- bslib::page(
             icon_class = "bi bi-house-door pe-none me-2",
             label = " Home "
           ),
-
           sidebar_li(
             link_id = "dashboard",
             icon_class = "bi bi-speedometer2 pe-none me-2",
             label = " Dashboard "
           ),
-
           sidebar_li(
             link_id = "orders",
             icon_class = "bi bi-table pe-none me-2",
             label = " Orders "
           ),
-
           sidebar_li(
             link_id = "products",
             icon_class = "bi bi-grid pe-none me-2",
             label = " Products "
           ),
-
           sidebar_li(
             link_id = "customers",
             icon_class = "bi bi-person-circle pe-none me-2",
@@ -114,6 +111,34 @@ ui <- bslib::page(
               tags$hr(class = "dropdown-divider")
             ),
             dropdown_li(label = "Sign out")
+          )
+        )
+      ),
+      tags$div(
+        # tab panels:
+        tabsetPanel(
+          id = "tabs",
+          selected = "home",
+          type = "hidden",
+          tabPanelBody(
+            value = "home",
+            tags$h1("East or west, home is the best!")
+          ),
+          tabPanelBody(
+            value = "dashboard",
+            tags$h1("This will contain the dashboard")
+          ),
+          tabPanelBody(
+            value = "orders",
+            tags$h1("Orders will appear here")
+          ),
+          tabPanelBody(
+            value = "products",
+            tags$h1("Our products are unique and of best value")
+          ),
+          tabPanelBody(
+            value = "customers",
+            tags$h1("Here is what our customers say")
           )
         )
       )
