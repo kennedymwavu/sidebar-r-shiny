@@ -10,6 +10,12 @@ server <- function(input, output, session) {
   }
   lapply(sidebar_ids, \(id) {
     shinyjs::onclick(id, expr = switch_tab(id))
+
+    # observe go_to* buttons:
+    observeEvent(input[[paste0("go_to_", id)]], {
+      switch_tab(id = id)
+      shinyjs::click(id = id)
+    })
   })
 
   observeEvent(input$add_tab, {
