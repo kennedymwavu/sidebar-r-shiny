@@ -2,6 +2,7 @@ ui <- bslib::page(
   title = "Sidebar",
   theme = bslib::bs_theme(version = 5),
   lang = "en",
+  shinyjs::useShinyjs(),
   tags$head(
     tags$meta(charset = "utf-8"),
     tags$meta(
@@ -27,87 +28,32 @@ ui <- bslib::page(
     tags$main(
       class = "d-flex flex-nowrap min-vh-100",
 
-      # sidebar:
+      sidebar(),
       tags$div(
-        class = "d-flex flex-column flex-shrink-0 p-3 text-bg-dark",
-        style = "width: 280px;",
-
-        # logo and app title:
-        tags$a(
-          href = "/",
-          class = paste(
-            "d-flex align-items-center mb-3 mb-md-0 me-md-auto",
-            "text-white text-decoration-none"
+        # tab panels:
+        tabsetPanel(
+          id = "tabs",
+          selected = "home",
+          type = "hidden",
+          tabPanelBody(
+            value = "home",
+            tags$h1("East or west, home is the best!")
           ),
-          tags$img(
-            class = "bi pe-none me-2",
-            src = file.path("bootstrap-logo.png"),
-            width = "40"
+          tabPanelBody(
+            value = "dashboard",
+            tags$h1("This will contain the dashboard")
           ),
-          tags$span(
-            class = "fs-4",
-            "Sidebar"
-          )
-        ),
-        tags$hr(),
-
-        # sidebar nav:
-        tags$ul(
-          class = "nav nav-pills flex-column mb-auto",
-          sidebar_li(
-            link_class = "nav-link active",
-            aria_current = "page",
-            icon_class = "bi bi-house-door pe-none me-2",
-            label = " Home "
+          tabPanelBody(
+            value = "orders",
+            tags$h1("Orders will appear here")
           ),
-
-          sidebar_li(
-            icon_class = "bi bi-speedometer2 pe-none me-2",
-            label = " Dashboard "
+          tabPanelBody(
+            value = "products",
+            tags$h1("Our products are unique and of best value")
           ),
-
-          sidebar_li(
-            icon_class = "bi bi-table pe-none me-2",
-            label = " Orders "
-          ),
-
-          sidebar_li(
-            icon_class = "bi bi-grid pe-none me-2",
-            label = " Products "
-          ),
-
-          sidebar_li(
-            icon_class = "bi bi-person-circle pe-none me-2",
-            label = " Customers "
-          )
-        ),
-        tags$div(
-          class = "dropdown",
-          tags$a(
-            href = "#",
-            class = paste(
-              "d-flex align-items-center text-white text-decoration-none",
-              "dropdown-toggle"
-            ),
-            "data-bs-toggle" = "dropdown",
-            "aria-expanded" = "false",
-            tags$img(
-              src = "me.jpg",
-              width = "32",
-              height = "32",
-              class = "rounded-circle me-2"
-            ),
-            tags$strong("Mwavu")
-          ),
-          tags$ul(
-            class = "dropdown-menu dropdown-menu-dark text-small shadow",
-            dropdown_li(label = "New project"),
-            dropdown_li(label = "Settings"),
-            dropdown_li(label = "Profile"),
-            tags$li(
-              tags$hr(class = "dropdown-divider")
-            ),
-            dropdown_li(label = "Sign out")
+          tabPanelBody(
+            value = "customers",
+            tags$h1("Here is what our customers say")
           )
         )
       )

@@ -4,6 +4,7 @@
 #'
 #' @param item_class The class of the list item. Default is "nav-item".
 #' @param href The URL for the link. Default is "#".
+#' @param link_id The id of the link element. Default is NULL.
 #' @param link_class The class of the link. Default is "nav-link text-white".
 #' @param aria_current The value of the "aria-current" attribute.
 #' Default is "false".
@@ -28,6 +29,7 @@
 sidebar_li <- function(
     item_class = "nav-item",
     href = "#",
+    link_id = NULL,
     link_class = "nav-link text-white",
     aria_current = "false",
     icon_name = NULL,
@@ -38,6 +40,7 @@ sidebar_li <- function(
     class = item_class,
     tags$a(
       href = href,
+      id = link_id,
       class = link_class,
       "aria-current" = aria_current,
       shiny::icon(
