@@ -1,17 +1,15 @@
 server <- function(input, output, session) {
   sidebar_ids <- c("home", "dashboard", "orders", "products", "customers")
-  lapply(sidebar_ids, \(id) {
-    shinyjs::onclick(
-      id = id,
-      expr = {
-        freezeReactiveValue(input, "tabs")
-        updateTabsetPanel(
-          session = session,
-          inputId = "tabs",
-          selected = id
-        )
-      }
+  switch_tab <- \(id) {
+    freezeReactiveValue(input, "tabs")
+    updateTabsetPanel(
+      session = session,
+      inputId = "tabs",
+      selected = id
     )
+  }
+  lapply(sidebar_ids, \(id) {
+    shinyjs::onclick(id, expr = switch_tab(id))
   })
 
   observeEvent(input$add_tab, {
@@ -39,25 +37,9 @@ server <- function(input, output, session) {
     )
 
     # switch to the new tab:
-    freezeReactiveValue(input, "tabs")
-    updateTabsetPanel(
-      session = session,
-      inputId = "tabs",
-      selected = id
-    )
+    switch_tab(id)
 
     # switch to the new tab whenever the li element is clicked:
-    shinyjs::onclick(
-      id = id,
-      expr = {
-        # switch to the new tab:
-        freezeReactiveValue(input, "tabs")
-        updateTabsetPanel(
-          session = session,
-          inputId = "tabs",
-          selected = id
-        )
-      }
-    )
+    shinyjs::onclick(id = id, expr = switch_tab(id))
   })
 }
