@@ -56,6 +56,7 @@ ui <- bslib::page(
           id = "sidebar_ul",
           class = "nav nav-pills flex-column mb-auto",
           sidebar_li(
+            link_id = "home",
             link_class = "nav-link active text-white",
             aria_current = "page",
             icon_class = "bi bi-house-door pe-none me-2",
@@ -63,21 +64,25 @@ ui <- bslib::page(
           ),
 
           sidebar_li(
+            link_id = "dashboard",
             icon_class = "bi bi-speedometer2 pe-none me-2",
             label = " Dashboard "
           ),
 
           sidebar_li(
+            link_id = "orders",
             icon_class = "bi bi-table pe-none me-2",
             label = " Orders "
           ),
 
           sidebar_li(
+            link_id = "products",
             icon_class = "bi bi-grid pe-none me-2",
             label = " Products "
           ),
 
           sidebar_li(
+            link_id = "customers",
             icon_class = "bi bi-person-circle pe-none me-2",
             label = " Customers "
           )
