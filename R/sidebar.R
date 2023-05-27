@@ -54,6 +54,14 @@ sidebar <- \(...) {
           link_id = "customers",
           icon_class = "bi bi-person-circle pe-none me-2",
           label = " Customers "
+        ),
+        tags$div(
+          actionButton(
+            inputId = "add_tab",
+            label = "Add section",
+            icon = icon(name = NULL, class = "bi bi-plus"),
+            class = "btn btn-sm btn-outline-light my-5 w-100"
+          )
         )
       ),
       tags$div(
