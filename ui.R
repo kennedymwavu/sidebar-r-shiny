@@ -53,9 +53,10 @@ ui <- bslib::page(
 
         # sidebar nav:
         tags$ul(
+          id = "sidebar_ul",
           class = "nav nav-pills flex-column mb-auto",
           sidebar_li(
-            link_class = "nav-link active",
+            link_class = "nav-link active text-white",
             aria_current = "page",
             icon_class = "bi bi-house-door pe-none me-2",
             label = " Home "
