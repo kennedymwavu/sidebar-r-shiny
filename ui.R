@@ -37,7 +37,31 @@ ui <- bslib::page(
           type = "hidden",
           tabPanelBody(
             value = "home",
-            tags$h1("East or west, home is the best!")
+            tags$h1("East or west, home is the best!"),
+            actionButton(
+              inputId = "go_to_dashboard",
+              label = "Go to dashboard",
+              icon = icon(name = NULL, class = "bi bi-arrow-right"),
+              class = "btn btn-success"
+            ),
+            actionButton(
+              inputId = "go_to_orders",
+              label = "Visit the orders page",
+              icon = icon(name = NULL, class = "bi bi-arrow-right"),
+              class = "btn btn-success"
+            ),
+            actionButton(
+              inputId = "go_to_products",
+              label = "See our products",
+              icon = icon(name = NULL, class = "bi bi-arrow-right"),
+              class = "btn btn-success"
+            ),
+            actionButton(
+              inputId = "go_to_customers",
+              label = "See our customers",
+              icon = icon(name = NULL, class = "bi bi-arrow-right"),
+              class = "btn btn-success"
+            )
           ),
           tabPanelBody(
             value = "dashboard",
