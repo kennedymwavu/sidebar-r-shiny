@@ -20,8 +20,9 @@ ui <- tags$html(
   ),
   tags$body(
     bootstrapLib(theme = bslib::bs_theme(version = 5)),
+    suppressDependencies("bootstrap"),
     tags$div(
-      class = "d-flex",
+      class = "d-flex vh-100",
       # sidebar
       tags$div(
         class = "flex-shrink-0 p-3",
@@ -183,7 +184,6 @@ ui <- tags$html(
       )
     ),
     # bootstrap js:
-    suppressDependencies("bootstrap"),
     tags$script(
       src = "https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js",
       integrity = "sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz",

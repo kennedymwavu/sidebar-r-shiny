@@ -9,11 +9,7 @@ server <- function(input, output, session) {
   lapply(sidebar_link_ids, \(id) {
     observeEvent(input[[id]], {
       freezeReactiveValue(input, "tabs")
-      updateTabsetPanel(
-        session = session,
-        inputId = "tabs",
-        selected = id
-      )
+      updateTabsetPanel(session = session, inputId = "tabs", selected = id)
     })
   })
 }
