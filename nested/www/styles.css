@@ -1,6 +1,7 @@
 body {
   min-height: 100vh;
   min-height: -webkit-fill-available;
+  font-family: 'Quicksand', sans-serif;
 }
 
 html {
@@ -42,11 +43,13 @@ html {
   padding: .1875rem .5rem;
   margin-top: .125rem;
   margin-left: 1.25rem;
+  max-width: 190px;
 }
 .btn-toggle-nav a:hover,
 .btn-toggle-nav a:focus {
   background-color: var(--bs-tertiary-bg);
 }
 .btn-toggle-nav a.active {
-  background-color: var(--bs-tertiary-bg);
+  background-color: var(--bs-dark);
+  color: var(--bs-white) !important;
 }

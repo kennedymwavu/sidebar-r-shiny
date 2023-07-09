@@ -16,16 +16,24 @@ ui <- tags$html(
     tags$link(
       href = "styles.css",
       rel = "stylesheet"
+    ),
+    # google fonts:
+    tags$link(rel = "preconnect", href = "https://fonts.googleapis.com"),
+    tags$link(rel = "preconnect", href = "https://fonts.gstatic.com", crossorigin = NA),
+    tags$link(
+      href = "https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;500;600;700&display=swap",
+      rel = "stylesheet"
     )
   ),
   tags$body(
+    class = "bg-light",
     bootstrapLib(theme = bslib::bs_theme(version = 5)),
     suppressDependencies("bootstrap"),
     tags$div(
       class = "d-flex vh-100",
       # sidebar
       tags$div(
-        class = "flex-shrink-0 p-3",
+        class = "flex-shrink-0 p-3 bg-white border-end shadow-sm",
         style = "width: 280px;",
         tags$a(
           href = "https://shiny.posit.co/",
@@ -36,11 +44,12 @@ ui <- tags$html(
           tags$img(
             src = "shiny-solo.png",
             alt = "Shiny Logo",
-            width = 50
+            width = 50,
+            height = 25
           ),
           tags$span(
-            class = "fs-5 fw-semibold ps-1",
-            "Sidebar"
+            class = "fs-5 fw-semibold ps-2",
+            "Sidebar Showcase"
           )
         ),
         tags$ul(
@@ -75,7 +84,7 @@ ui <- tags$html(
               tags$ul(
                 class = "btn-toggle-nav list-unstyled fw-normal pb-1 small",
                 create_sidebar_link(id = "weekly", label = "Weekly"),
-                create_sidebar_link(id = "monthly", label = "monthly"),
+                create_sidebar_link(id = "monthly", label = "Monthly"),
                 create_sidebar_link(id = "annually", label = "Annually")
               )
             )
@@ -121,6 +130,7 @@ ui <- tags$html(
       ),
       # main
       tags$div(
+        class = "p-3",
         tabsetPanel(
           id = "tabs",
           type = "hidden",
